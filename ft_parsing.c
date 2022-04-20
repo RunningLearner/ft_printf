@@ -6,7 +6,7 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:22:37 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/19 17:31:26 by seunam           ###   ########.fr       */
+/*   Updated: 2022/04/20 12:05:21 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,17 @@ static int	printuint(unsigned int arg, char type)
 	char	str[10];
 
 	cnt = 0;
-	if (arg == 0)
+	if (type == 'u')
 	{
-		write(1, "0", 1);
-		return (1);
+		cnt += putnbr(arg);
 	}
-	while (arg)
+	else if (type == 'x')
 	{
-		str[cnt] = (arg % 10) + '0';
-		arg /= 10;
-		cnt ++;
+		cnt += puthex(arg, type);
 	}
-	while (str >= 0)
+	else if (type == 'X')
 	{
-		write(1, str--, 1);
+		cnt += puthex(arg, type);
 	}
 	return (cnt);
 }
