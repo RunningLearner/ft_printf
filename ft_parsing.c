@@ -6,13 +6,13 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:22:37 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/20 15:23:24 by seunam           ###   ########.fr       */
+/*   Updated: 2022/04/20 16:18:59 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "ft_printf.h"
 
-static int	printchar(int arg)
+int	printchar(int arg)
 {
 	char	c;
 	int	cnt;
@@ -23,7 +23,7 @@ static int	printchar(int arg)
 	return (cnt);
 }
 
-static int	printstr(char *arg)
+int	printstr(char *arg)
 {
 	int	cnt;
 
@@ -36,7 +36,7 @@ static int	printstr(char *arg)
 	return (cnt);
 }
 
-static int	printptr(size_t arg)
+int	printptr(size_t arg)
 {
 	int	cnt;
 
@@ -47,24 +47,19 @@ static int	printptr(size_t arg)
 	return (cnt);
 }
 
-static int	printint(int arg)
+int	printint(int arg)
 {
 	int	cnt;
-	char	*str;
 
 	cnt = 0;
-	else
-	{
-		ft_putnbr_fd(arg, 1);
-		cnt += nbrlen(arg);
-	}
+	ft_putnbr_fd(arg, 1);
+	cnt += nbrlen(arg);
 	return (cnt);
 }
 
-static int	printuint(unsigned int arg, char type)
+int	printuint(unsigned int arg, char type)
 {	
 	int	cnt;
-	char	str[10];
 
 	cnt = 0;
 	if (type == 'u')

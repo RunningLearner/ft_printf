@@ -6,7 +6,7 @@
 #    By: seunam <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/17 17:20:10 by seunam            #+#    #+#              #
-#    Updated: 2022/04/17 18:26:24 by seunam           ###   ########.fr        #
+#    Updated: 2022/04/20 16:16:58 by seunam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,15 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar crs
 RM = rm -f
 
-SRC =
+SRCS = ft_printf.c ft_parsing.c ft_util.c
 
 OBJS =$(SRCS:.c=.o)
 
-.c.o : 
-	$(CC) $(CFLAGS) -c $< -I.
+all : $(NAME)
 $(NAME) : $(OBJS)
 	make -C $(LIBFTDIR)
-	cp $(LIBFTDIR)/$(LIBFT) $(NAME)
-	$(AR) $@ $?
-all : $(NAME)
+	cp $(LIBFTDIR)/$(LIBFT) $(NAME) 
+	$(AR) $(NAME) $(OBJS)
 
 clean :
 	make -C $(LIBFTDIR) clean

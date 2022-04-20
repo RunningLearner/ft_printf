@@ -6,12 +6,12 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:32:21 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/20 15:24:09 by seunam           ###   ########.fr       */
+/*   Updated: 2022/04/20 16:16:28 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static int	parising(char type, va_list ap)
+static int	parsing(char type, va_list ap)
 {
 	int	printcnt;
 	
@@ -34,6 +34,7 @@ int	ft_printf(const char *type, ...)
 	va_list	ap;
 	int	printcnt;
 
+	printcnt = 0;
 	va_start(ap, type);
 	while (*type)
 	{
@@ -47,5 +48,5 @@ int	ft_printf(const char *type, ...)
 		type ++;
 	}
 	va_end(ap);
-	return (prnitcnt);
+	return (printcnt);
 }

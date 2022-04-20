@@ -6,11 +6,11 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 12:05:34 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/20 15:23:29 by seunam           ###   ########.fr       */
+/*   Updated: 2022/04/20 16:20:20 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "ft_printf.h"
 
 int	hexlen(size_t arg)
 {
@@ -32,7 +32,7 @@ int	nbrlen(long long arg)
 	long long	len;
 
 	len = 0;
-	if (arg = 0)
+	if (arg == 0)
 		return (1);
 	if (arg < 0)
 		len ++;
@@ -64,8 +64,8 @@ void	put_hexup(size_t num)
 {
 	if (num >= 16)
 	{
-		put_pointer(num / 16);
-		put_pointer(num % 16);
+		put_hexup(num / 16);
+		put_hexup(num % 16);
 	}
 	else
 	{
@@ -76,13 +76,13 @@ void	put_hexup(size_t num)
 	}
 }
 
-void	put_uint(int n)
+void	put_uint(unsigned int num)
 {
-	if (n >= 10)
+	if (num >= 10)
 	{
-		put_uint(n / 10);
-		write(1, &"0123456789"[n % 10], 1);
+		put_uint(num / 10);
+		write(1, &"0123456789"[num % 10], 1);
 	}
 	else
-		write(1, &"0123456789"[n], 1);
+		write(1, &"0123456789"[num], 1);
 }
