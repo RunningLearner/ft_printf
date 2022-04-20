@@ -6,21 +6,21 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:22:37 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/20 16:18:59 by seunam           ###   ########.fr       */
+/*   Updated: 2022/04/20 18:08:18 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	printchar(int arg)
+int	printchar(int arg, char type)
 {
-	char	c;
-	int	cnt;
-
-	cnt = 0;
-	c = (char)arg;
-	cnt = write(1, &c, 1);
-	return (cnt);
+	if (type == '%')
+	{
+		write(1, "%", 1);
+		return (1);
+	}
+	write(1, &arg, 1);
+	return (1);
 }
 
 int	printstr(char *arg)
@@ -28,7 +28,12 @@ int	printstr(char *arg)
 	int	cnt;
 
 	cnt = 0;
-	while (arg)
+	if (!arg)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (*arg)
 	{
 		cnt += write(1, arg, 1);
 		arg ++;
