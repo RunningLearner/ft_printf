@@ -6,7 +6,7 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:32:21 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/19 17:31:55 by seunam           ###   ########.fr       */
+/*   Updated: 2022/04/20 15:24:09 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -21,7 +21,7 @@ static int	parising(char type, va_list ap)
 	if (type == 's')
 		printcnt = printstr(va_arg(ap, char *)); 
 	if (type == 'p')
-		printcnt = printptr(va_arg(ap, unsigned long long)); 
+		printcnt = printptr(va_arg(ap, size_t)); 
 	if (type == 'i' || type == 'd')
 		printcnt = printint(va_arg(ap, int)); 
 	if (type == 'u' || type == 'x' || type == 'X')

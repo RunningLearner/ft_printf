@@ -6,7 +6,7 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:22:37 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/20 12:05:21 by seunam           ###   ########.fr       */
+/*   Updated: 2022/04/20 15:23:24 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	printchar(int arg)
 	int	cnt;
 
 	cnt = 0;
-	c = arg;
+	c = (char)arg;
 	cnt = write(1, &c, 1);
 	return (cnt);
 }
@@ -36,17 +36,14 @@ static int	printstr(char *arg)
 	return (cnt);
 }
 
-static int	printptr(unsigned long long arg)
+static int	printptr(size_t arg)
 {
 	int	cnt;
 
 	cnt = 0;
 	cnt += write(1, "0x", 2);
-	while (arg)
-	{
-		print
-		cnt += write(1, "0123456789abcdef"[arg % 16],1);
-	}
+	put_hex(arg);
+	cnt += hexlen(arg);
 	return (cnt);
 }
 
@@ -56,12 +53,10 @@ static int	printint(int arg)
 	char	*str;
 
 	cnt = 0;
-	str = itoa(arg);
-	cnt = strlen(str);
-	while (*str)
+	else
 	{
-		write(1, str, 1);
-		str ++;
+		ft_putnbr_fd(arg, 1);
+		cnt += nbrlen(arg);
 	}
 	return (cnt);
 }
@@ -74,15 +69,18 @@ static int	printuint(unsigned int arg, char type)
 	cnt = 0;
 	if (type == 'u')
 	{
-		cnt += putnbr(arg);
+		put_uint(arg);
+		cnt += nbrlen(arg);
 	}
 	else if (type == 'x')
 	{
-		cnt += puthex(arg, type);
+		put_hex(arg);
+		cnt += hexlen(arg);
 	}
 	else if (type == 'X')
 	{
-		cnt += puthex(arg, type);
+		put_hexup(arg);
+		cnt += hexlen(arg);
 	}
 	return (cnt);
 }
