@@ -6,19 +6,14 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:22:37 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/20 18:08:18 by seunam           ###   ########.fr       */
+/*   Updated: 2022/06/29 20:46:01 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	printchar(int arg, char type)
+int	printchar(int arg)
 {
-	if (type == '%')
-	{
-		write(1, "%", 1);
-		return (1);
-	}
 	write(1, &arg, 1);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: seunam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:32:21 by seunam            #+#    #+#             */
-/*   Updated: 2022/04/20 18:17:41 by seunam           ###   ########.fr       */
+/*   Updated: 2022/06/29 21:01:02 by seunam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -16,8 +16,8 @@ static int	parsing(char type, va_list *ap)
 	int	printcnt;
 	
 	printcnt = 0;
-	if (type == 'c' || type == '%')
-		printcnt = printchar(va_arg(*ap, int), type); 
+	if (type == 'c')
+		printcnt = printchar(va_arg(*ap, int)); 
 	else if (type == 's')
 		printcnt = printstr(va_arg(*ap, char *)); 
 	else if (type == 'p')
@@ -26,8 +26,8 @@ static int	parsing(char type, va_list *ap)
 		printcnt = printint(va_arg(*ap, int)); 
 	else if (type == 'u' || type == 'x' || type == 'X')
 		printcnt = printuint(va_arg(*ap, unsigned int), type); 
-	else 
-		return (-1);
+	else if (type == '%')
+		printcnt = write(1, "%", 1);
 	return (printcnt);
 }
 
