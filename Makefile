@@ -6,7 +6,7 @@
 #    By: seunam <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/17 17:20:10 by seunam            #+#    #+#              #
-#    Updated: 2022/04/20 16:16:58 by seunam           ###   ########.fr        #
+#    Updated: 2022/06/29 21:09:56 by seunam           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 LIBFTDIR = ./libft
 LIBFT = libft.a
 
-CC = gcc 
+CC = cc 
 CFLAGS = -Wall -Wextra -Werror
 AR = ar crs
 RM = rm -f
